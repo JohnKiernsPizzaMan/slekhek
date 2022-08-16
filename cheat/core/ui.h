@@ -19,6 +19,7 @@ namespace u
 	inline ImFont* segoe = nullptr;
 
 	inline bool open = true;
+	inline bool otherMenu = true;
 	inline HWND window = nullptr;
 	inline WNDPROC WindowProcessOriginal = nullptr;
 }
