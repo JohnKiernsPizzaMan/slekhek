@@ -340,6 +340,7 @@
     <ClInclude Include="external\minhook\hde\table64.h" />
     <ClInclude Include="external\minhook\minhook.h" />
     <ClInclude Include="external\minhook\trampoline.h" />
+    <ClInclude Include="cheat\features\legitbot.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cheat\core\functions\allockeyvaluesmemory.cpp" />
@@ -393,6 +394,7 @@
     <ClCompile Include="external\minhook\hde\hde64.c" />
     <ClCompile Include="external\minhook\hook.c" />
     <ClCompile Include="external\minhook\trampoline.c" />
+    <ClCompile Include="cheat\features\legitbot.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -14,5 +14,10 @@ bool __stdcall h::CreateMove(float frameTime, UserCmd* cmd)
 	f::misc.BunnyHop(cmd);
 	f::misc.RevealRadar();
 
+	f::legitbot.AimBot(cmd);
+	f::legitbot.TriggerBot(cmd);
+	f::legitbot.RecoilControl(cmd);
+
+	
 	return false;
 }

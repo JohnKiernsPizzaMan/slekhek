@@ -140,7 +140,7 @@ struct CSurface
 class TraceFilterInterface
 {
 public:
-	virtual bool ShouldHitEntity(HandleEntity* pEntity, int contentsMask) = 0;
+	virtual bool ShouldHitEntity(ClientEntity* pEntity, int contentsMask) = 0;
 	virtual TraceType	GetTraceType() const = 0;
 };
 
@@ -149,10 +149,10 @@ class TraceFilter : public TraceFilterInterface
 	using FilterCallbackFn = bool(*)(HandleEntity*, int);
 
 public:
-	TraceFilter(const HandleEntity* skip, TraceType type = TraceType::TRACE_EVERYTHING)
+	TraceFilter(const ClientEntity* skip, TraceType type = TraceType::TRACE_EVERYTHING)
 		: skip(skip), type(type) { }
 
-	bool ShouldHitEntity(HandleEntity* entity, int mask) override
+	bool ShouldHitEntity(ClientEntity* entity, int mask) override
 	{
 		return entity != skip;
 	}
@@ -163,7 +163,7 @@ public:
 	}
 
 private:
-	const HandleEntity* skip = nullptr;
+	const ClientEntity* skip = nullptr;
 	FilterCallbackFn checkCallback = nullptr;
 	TraceType type = TraceType::TRACE_EVERYTHING;
 };
@@ -405,7 +405,8 @@ public:
 	virtual void	ClipRayToCollideable(const Ray& ray, unsigned int fMask, Collideable* pCollide, Trace* pTrace) = 0;
 
 	// A version that simply accepts a ray (can work as a traceline or tracehull)
-	virtual void	TraceRay(const Ray& ray, unsigned int fMask, TraceFilter* pTraceFilter, Trace* pTrace) = 0;
+	virtual void	TraceRay(const Ray& ray, unsigned int fMask, const TraceFilter& pTraceFilter, Trace& pTrace) = 0;
+	//virtual void	TraceRay(const Ray& ray, unsigned int fMask, TraceFilter* pTraceFilter, Trace* pTrace) = 0;
 
 	// A version that sets up the leaf and entity lists and allows you to pass those in for collision.
 	virtual void	SetupLeafAndEntityListRay(const Ray& ray, TraceListData* pTraceData) = 0;

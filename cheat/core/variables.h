@@ -52,5 +52,16 @@ namespace v
 	{
 
 	};
+	struct LegitBot
+	{
+		bool aimbot = false;
+		bool silent = false;
+		bool triggerbot = false;
+		bool rcs = false;
+		float fov = 5.f;
+		float smoothing = 1.f;
+
+	};
+	inline auto legitbot = LegitBot{};
 	inline auto skins = Skins{ };
 }

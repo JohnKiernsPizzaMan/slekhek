@@ -43,8 +43,8 @@ public:
 	char nameBuffer[36];
 
 private:
-	const char* baseDir = "kakhack/";
-	const char* configDir = "kakhack/configs";
+	const char* baseDir = "slekhek/";
+	const char* configDir = "slekhek/configs";
 
 	size_t selected = 0;
 	std::vector<std::string> configs{ };

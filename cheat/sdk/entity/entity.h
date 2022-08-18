@@ -66,6 +66,10 @@ public:
 		m::Call<void>(this, 285, std::cref(v));
 		return v;
 	}
+	void GetEyePosition(Vector& eyePosition)
+	{
+		m::Call<void>(this, 285, std::ref(eyePosition));
+	}
 
 	CSPlayer* GetObserverTarget()
 	{
@@ -77,6 +81,11 @@ public:
 		Vector v;
 		m::Call<void>(this, 346, std::cref(v));
 		return v;
+	}
+
+	int GetWeaponType() noexcept
+	{
+		return m::Call<int>(this, 455);
 	}
 
 	Matrix3x4* GetBoneMatrix();
@@ -139,11 +148,34 @@ public:
 
 class BaseCombatWeapon : public BaseEntity
 {
+
+	enum EWeaponType : int
+	{
+		WEAPONTYPE_KNIFE = 0,
+		WEAPONTYPE_PISTOL = 1,
+		WEAPONTYPE_SUBMACHINEGUN = 2,
+		WEAPONTYPE_RIFLE = 3,
+		WEAPONTYPE_SHOTGUN = 4,
+		WEAPONTYPE_SNIPER = 5,
+		WEAPONTYPE_MACHINEGUN = 6,
+		WEAPONTYPE_C4 = 7,
+		WEAPONTYPE_PLACEHOLDER = 8,
+		WEAPONTYPE_GRENADE = 9,
+		WEAPONTYPE_HEALTHSHOT = 11,
+		WEAPONTYPE_FISTS = 12,
+		WEAPONTYPE_BREACHCHARGE = 13,
+		WEAPONTYPE_BUMPMINE = 14,
+		WEAPONTYPE_TABLET = 15,
+		WEAPONTYPE_MELEE = 16
+	};
 public:
 	NETVAR(ViewModelIndex, "CBaseCombatWeapon->m_iViewModelIndex", int)
 	NETVAR(WorldModelIndex, "CBaseCombatWeapon->m_iWorldModelIndex", int)
 	NETVAR(WorldDroppedModelIndex, "CBaseCombatWeapon->m_iWorldDroppedModelIndex", int)
 	NETVAR(WeaponWorldModel, "CBaseCombatWeapon->m_hWeaponWorldModel", BaseHandle)
+	NETVAR(GetClip, "CBaseCombatWeapon->m_iClip1", int)
+
+	
 };
 
 class BaseAttributableItem : public BaseCombatWeapon

@@ -57,6 +57,11 @@ struct Matrix3x4
 		this->data[2][3] = origin.z;
 	}
 
+	Vector Origin() noexcept
+	{
+		return { data[0][3], data[1][3], data[2][3] };
+	}
+
 	constexpr void Invalidate()
 	{
 		for (auto& subData : data)

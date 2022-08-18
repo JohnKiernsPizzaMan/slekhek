@@ -185,7 +185,9 @@ void u::Render()
 		
 
 		const auto tabSize = ImVec2(0, 0);
-		if (ImGui::Button("aimbot", tabSize)) { tab = 0; }
+		if (ImGui::Button("ragebot", tabSize)) { tab = -1; }
+		ImGui::SameLine();
+		if (ImGui::Button("legitbot", tabSize)) { tab = 0; }
 		ImGui::SameLine();
 		if (ImGui::Button("visuals", tabSize)) { tab = 1; }
 		ImGui::SameLine();
@@ -200,11 +202,43 @@ void u::Render()
 
 		switch (tab)
 		{
-		case 0:
+		case -1:
 		{
 			ImGui::BeginChild(1, { }, true);
 
 			ImGui::EndChild();
+		}
+		break;
+		case 0:
+		{
+			ImGui::BeginGroup();
+			ImGui::BeginChild(1, { (avail.x - 8) * 0.5f, avail.y * 0.65f }, true);
+			ImGui::Text("AimBot");
+			ImGui::Separator();
+			ImGui::Checkbox("Enable", &v::legitbot.aimbot);
+			ImGui::Checkbox("Silent", &v::legitbot.silent);
+			ImGui::SliderFloat("FOV", &v::legitbot.fov, 0, 180);
+			ImGui::SliderFloat("Scale", &v::legitbot.smoothing, 0, 1.0);
+			ImGui::EndChild();
+			
+			ImGui::BeginChild(2, { (avail.x - 8) * 0.5f, 0}, true);
+			ImGui::Text("TriggerBot");
+			ImGui::Separator();
+			ImGui::Checkbox("Enable", &v::legitbot.triggerbot);
+			ImGui::EndChild();
+			ImGui::EndGroup();
+
+			ImGui::SameLine();
+
+			ImGui::BeginGroup();
+			ImGui::BeginChild(3, { (avail.x - 8) * 0.5f, avail.y * 0.65f }, true);
+			ImGui::Text("Recoil Control");
+			ImGui::Separator();
+			ImGui::Checkbox("Enable", &v::legitbot.rcs);
+			ImGui::EndChild();
+			ImGui::EndGroup();
+
+
 		}
 		break;
 		case 1:
@@ -336,7 +370,7 @@ void u::Render()
 			ImGui::BeginGroup();
 			ImGui::BeginChild(1, { (avail.x - 8) * 0.5f, avail.y }, true);
 			ImGui::Text("Configs:");
-			HelpMarker("Saved in csgo_dir/kakhack/configs");
+			HelpMarker("Saved in csgo_dir/slekhek/configs");
 			ImGui::Separator();
 
 			style->FramePadding = { 20, 20 };

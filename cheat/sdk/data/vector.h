@@ -227,6 +227,11 @@ public:
 		return vecOut;
 	}
 
+	constexpr Vector Scale(float factor) const noexcept
+	{
+		return { x * factor, y * factor, z * factor };
+	}
+
 	float NormalizeInPlace()
 	{
 		const float flLength = this->Length();

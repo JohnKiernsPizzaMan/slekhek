@@ -576,6 +576,9 @@
     <ClInclude Include="cheat\other\render.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="cheat\features\legitbot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="external\imgui\imgui.cpp">
@@ -729,6 +732,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="cheat\core\functions\senddatagram.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cheat\features\legitbot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -61,7 +61,7 @@ void Misc::BunnyHop(UserCmd* cmd)
 	if (!v::misc.bunnyHop)
 		return;
 
-	if (!(g::localPlayer->Flags() & 1))
+	if (!(g::localPlayer->Flags() & FL_ONGROUND))
 		cmd->buttons &= ~UserCmd::CommandButtons::IN_JUMP;
 }
 

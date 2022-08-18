@@ -15,7 +15,7 @@
 void Message(const char* error)
 {
 	MessageBeep(MB_ICONSTOP);
-	MessageBoxA(NULL, error, "kakhack", MB_OK | MB_ICONERROR);
+	MessageBoxA(NULL, error, "slekhek", MB_OK | MB_ICONERROR);
 }
 
 DWORD WINAPI Initialize(LPVOID moduleInstance)
